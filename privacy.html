@@ -1,2 +1,442 @@
 
-test1
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Dashboard — Privacy Policy</title>
+<style>
+  :root {
+    --bg: #F4F1ED;
+    --surface: #FFFFFF;
+    --ink: #0D1326;
+    --ink-soft: #6B7086;
+    --ink-faint: rgba(13, 19, 38, 0.35);
+    --accent: #FF4D6A;
+    --accent-ink: #0D1326;
+    --hairline: rgba(13, 19, 38, 0.12);
+    --hairline-strong: rgba(13, 19, 38, 0.18);
+    --glow: rgba(255, 77, 106, 0.14);
+    --watermark: rgba(13, 19, 38, 0.05);
+    --badge-bg: rgba(13, 19, 38, 0.035);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B1220;
+      --surface: #17203A;
+      --ink: #F4F1ED;
+      --ink-soft: #8B93A6;
+      --ink-faint: rgba(244, 241, 237, 0.4);
+      --accent: #FF6B85;
+      --accent-ink: #0D1326;
+      --hairline: rgba(255, 255, 255, 0.1);
+      --hairline-strong: rgba(255, 255, 255, 0.16);
+      --glow: rgba(255, 107, 133, 0.18);
+      --glow-deep: rgba(23, 32, 58, 0.85);
+      --watermark: rgba(244, 241, 237, 0.06);
+      --badge-bg: rgba(255, 255, 255, 0.045);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0B1220;
+    --surface: #17203A;
+    --ink: #F4F1ED;
+    --ink-soft: #8B93A6;
+    --ink-faint: rgba(244, 241, 237, 0.4);
+    --accent: #FF6B85;
+    --accent-ink: #0D1326;
+    --hairline: rgba(255, 255, 255, 0.1);
+    --hairline-strong: rgba(255, 255, 255, 0.16);
+    --glow: rgba(255, 107, 133, 0.18);
+    --glow-deep: rgba(23, 32, 58, 0.85);
+    --watermark: rgba(244, 241, 237, 0.06);
+    --badge-bg: rgba(255, 255, 255, 0.045);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+  }
+
+  body {
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .glow {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(120% 70% at 50% -10%, var(--glow) 0%, transparent 55%),
+      radial-gradient(90% 60% at 50% 0%, var(--glow-deep, transparent) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 84px 28px 64px;
+  }
+
+  /* ---- Lockup ---- */
+  .lockup { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  .mark {
+    width: 46px;
+    height: auto;
+    color: var(--ink);
+    filter: drop-shadow(0 8px 16px var(--glow));
+  }
+
+  .wordmark {
+    margin-top: 14px;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  .tagline {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-indent: 0.28em;
+  }
+
+  /* ---- Header ---- */
+  header.doc-head {
+    margin-top: 56px;
+    text-align: center;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(34px, 5.4vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .meta {
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .intro {
+    margin-top: 28px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  .intro strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Trust badges ---- */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--badge-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 9px 16px;
+  }
+
+  .badge svg { width: 13px; height: 13px; flex: none; color: var(--accent); }
+
+  /* ---- Divider ---- */
+  .rule {
+    height: 1px;
+    background: var(--hairline);
+    border: none;
+    margin: 52px 0;
+  }
+
+  /* ---- Sections ---- */
+  section { margin-bottom: 44px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2 {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  h2::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+    transform: translateY(-2px);
+  }
+
+  section p {
+    margin: 0 0 14px;
+    color: var(--ink);
+    max-width: 58ch;
+  }
+
+  section p:last-child { margin-bottom: 0; }
+
+  section ul {
+    margin: 0 0 14px;
+    padding: 0;
+    list-style: none;
+    max-width: 58ch;
+  }
+
+  section ul:last-child { margin-bottom: 0; }
+
+  section li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+  }
+
+  section li:last-child { margin-bottom: 0; }
+
+  section li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.72em;
+    width: 6px;
+    height: 1.5px;
+    background: var(--accent);
+  }
+
+  strong { font-weight: 600; }
+
+  a {
+    color: var(--accent);
+    text-decoration-color: rgba(255, 77, 106, 0.4);
+    text-underline-offset: 2px;
+  }
+
+  a:hover { text-decoration-color: var(--accent); }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-card .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+  }
+
+  .contact-card .email {
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  .contact-card a.email { color: var(--ink); text-decoration: none; }
+  .contact-card a.email:hover { color: var(--accent); }
+
+  /* ---- Footer ---- */
+  footer {
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  footer a { color: var(--ink-soft); }
+  footer a:hover { color: var(--accent); }
+
+  .footer-mark { width: 16px; height: auto; color: var(--ink-faint); flex: none; }
+  .footer-brand { display: flex; align-items: center; gap: 8px; }
+
+  .colophon {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 480px) {
+    .page { padding: 64px 20px 48px; }
+    .contact-card { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .page { animation: rise 0.5s ease-out both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<div class="page">
+
+  <div class="lockup">
+    <svg class="mark" viewBox="0 0 120 108" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M60 98C60 98 8 62 8 32C8 14 24 4 40 4C50 4 58 10 60 20C62 10 70 4 80 4C96 4 112 14 112 32C112 62 60 98 60 98Z" />
+      <path d="M12 55H34L44 25L58 78L70 38L79 55H108" stroke="var(--accent)" stroke-width="5" />
+    </svg>
+    <div class="wordmark">Health Dashboard</div>
+    <div class="tagline">YOUR&nbsp;HEALTH&nbsp;DATA,&nbsp;ON&nbsp;YOUR&nbsp;DEVICE.</div>
+  </div>
+
+  <header class="doc-head">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated · August 13, 2026</p>
+    <p class="intro">Health Dashboard is a personal health &amp; fitness dashboard built on Apple Health. This page explains, in full, what data the app touches and why.</p>
+  </header>
+
+  <div class="badges">
+    <div class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>No account, name, or email required</div>
+    <div class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>No data ever leaves your device</div>
+    <div class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>No analytics, ads, or tracking</div>
+  </div>
+
+  <hr class="rule">
+
+  <section>
+    <h2>What data is collected</h2>
+    <p>With your explicit permission — requested by iOS the first time each feature is used, and always revocable from <strong>Settings → Privacy &amp; Security → Health</strong> — Health Dashboard reads the following from Apple Health to build your dashboard, readiness score, and exports:</p>
+    <ul>
+      <li>Workouts, steps, and other activity data.</li>
+      <li>Sleep sessions and sleep stages.</li>
+      <li>Heart rate, heart‑rate variability (HRV), resting heart rate, and blood oxygen (SpO₂).</li>
+      <li>Wrist temperature and other mobility/vitals metrics your devices record.</li>
+    </ul>
+    <p>If you use the built‑in pulse‑measurement feature, the app also turns on your phone's rear camera and flash to read your pulse from your fingertip. The video frames are analyzed live, on your device, to compute heart rate and HRV — <strong>no image or video is ever stored or transmitted</strong>, only the resulting numbers (BPM, HRV, timestamp).</p>
+    <p><strong>Health Dashboard does not collect your name, email, or any other personally identifiable data.</strong> There is no account, no sign‑up, and no advertising identifier (IDFA) — the app never requests it, so no App&nbsp;Tracking&nbsp;Transparency prompt ever appears.</p>
+  </section>
+
+  <section>
+    <h2>How your data is stored</h2>
+    <p>Health Dashboard has <strong>no server or backend of any kind</strong>. All processing — reading your Health data, computing scores, running the camera pulse analysis — happens entirely on your iPhone. Camera‑measured readings are saved to a small file inside the app's own local storage, and, if the "Save to Apple Health" setting is on (the default), mirrored back into Health so they sit alongside your watch data. Nothing is ever uploaded to the internet.</p>
+    <p>If you export a CSV or JSON file, that file is generated locally and handed to the standard iOS share sheet you invoke — you choose where it goes (Files, AirDrop, Mail, etc.). Health Dashboard itself never transmits it anywhere.</p>
+  </section>
+
+  <section>
+    <h2>Your Apple Watch</h2>
+    <p>If you install the optional Watch companion app, your iPhone sends a compact summary of your dashboard directly to your own paired Apple Watch, device‑to‑device, using Apple's WatchConnectivity framework. This transfer never touches the internet, a server, or any third party — it stays between the two devices you own.</p>
+  </section>
+
+  <section>
+    <h2>Who it's shared with</h2>
+    <p>Nobody. Health Dashboard contains no analytics SDK, no crash reporter, no ad network, and no third‑party processor of any kind. Your health data is never sold, never shared, and never transmitted off your device by the app.</p>
+  </section>
+
+  <section>
+    <h2>Permissions and consent</h2>
+    <p>Reading and writing Health data, and using the camera, each require a separate permission grant from iOS itself — you decide, category by category, the first time a feature needs it. You can review or withdraw any of these permissions at any time from <strong>Settings → Privacy &amp; Security → Health</strong> or <strong>→ Camera</strong>. Withdrawing a permission simply means the corresponding part of the dashboard shows less — the app never stops working entirely.</p>
+  </section>
+
+  <section>
+    <h2>How long data is kept</h2>
+    <p>Camera‑measured readings and cached workout data live in the app's local storage for as long as the app stays installed; deleting the app deletes them. Data read from Apple Health is governed by Apple Health itself — Health Dashboard only reads what's there at the time, it doesn't keep its own long‑term copy of your Health records.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>Because nothing is collected off your device, there is no remote copy of your data to request, correct, or export from us — everything already lives on your iPhone, under your control. You can revoke any permission in Settings at any time, or remove all locally stored app data by deleting the app. For any other question about your data, write to the address below.</p>
+    <div class="contact-card">
+      <div>
+        <div class="label">Privacy requests</div>
+        <a class="email" href="mailto:healthdashboard.app.support@gmail.com">healthdashboard.app.support@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact &amp; support</h2>
+    <p>Questions about this policy, or about Health Dashboard in general — write to the address below and you'll hear back from a person, not a bot.</p>
+    <div class="contact-card">
+      <div>
+        <div class="label">Support</div>
+        <a class="email" href="mailto:healthdashboard.app.support@gmail.com">healthdashboard.app.support@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes in a meaningful way, you'll be notified inside the app.</p>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <svg class="footer-mark" viewBox="0 0 120 108" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M60 98C60 98 8 62 8 32C8 14 24 4 40 4C50 4 58 10 60 20C62 10 70 4 80 4C96 4 112 14 112 32C112 62 60 98 60 98Z" />
+      </svg>
+      <span>Health Dashboard</span>
+    </div>
+    <a href="mailto:healthdashboard.app.support@gmail.com">healthdashboard.app.support@gmail.com</a>
+  </footer>
+
+  <p class="colophon">Health Dashboard is built and maintained by Leopoldo Romacho.</p>
+
+</div>
+
+</body>
+</html>
